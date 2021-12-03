@@ -10,6 +10,8 @@ The package includes the tools used in the paper `Deep Learning Based Prediction
 
 `model_trainer.py` trains the predictor model using PyTorch.
 
+`predictor.py` predits photonic designs.
+
 Pretrained models are found in the `models/` directory.
 
 # Authors
