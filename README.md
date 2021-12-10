@@ -1,5 +1,5 @@
-# NN-PFP
-`NN-PFP` (Neural Network Photonic Fabrication Predictor) is a package for modelling fabrication process induced variations in integrated photonic devices with deep convolutional neural networks.
+# PreFab
+`PreFab` (Prediction of Fabrication) is a package for modelling fabrication process induced variations in integrated photonic devices with deep convolutional neural networks.
 
 Trained models can predict variations like corner rounding, washing away of small holes/features, and general over/under-etching in any planar photonic structure. Once predicted, the designer can resimulate their design to rapidly prototype the expected performance and make any necessary changes.
 
@@ -19,7 +19,7 @@ Pretrained models are found in the `models/` directory.
 An example dataset are found in the `datasets/` directory.
 
 ## Authors
-`NN-PFP` was written by Dusan Gostimirovic with Odile Liboiron-Ladouceur, Danxia Xu, and Yuri Grinberg.
+`PreFab` was written by Dusan Gostimirovic with Odile Liboiron-Ladouceur, Danxia Xu, and Yuri Grinberg.
 
 ## License
 This project is licensed under the terms of the MIT license.
