@@ -20,6 +20,8 @@ An example dataset is found in the `datasets/` directory.
 
 GDS and SEM images are found in the `data/` directory.
 
+Sample device images (to be predicted) are found in the `devices/` directory.
+
 ## Authors
 `PreFab` was written by Dusan Gostimirovic with Odile Liboiron-Ladouceur, Danxia Xu, and Yuri Grinberg.
 
