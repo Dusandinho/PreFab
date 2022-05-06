@@ -3,7 +3,7 @@
 
 Trained models predict variations such as corner rounding (both over and under etching), washing away of small lines and islands, and filling of narrow holes and channels in planar photonic structures. Once predicted, the designer resimulates their design to rapidly prototype the expected performance and make any necessary changes prior to (costly) fabrication.
 
-This repository includes the tools used in the paper `Deep Learning Based Prediction of Fabrication-Process-Induced Structural Variations in Nanophotonic Devices` (which can be viewed here) for generating and processing training data, training the predictor model, and using the predictor model on photonic designs. This package also includes pretrained models and the data they are trained on.
+This repository includes the tools used in the paper `Deep Learning Based Prediction of Fabrication-Process-Induced Structural Variations in Nanophotonic Devices` (which can be viewed here) for generating and processing training data, training the predictor model, and using the predictor model on photonic designs. This repository also includes pretrained models and the data they are trained on.
 
 ## Features
 `pattern.py` generates randomized patterns which can be fabricated and imaged to model a desired nanofabrication process.
