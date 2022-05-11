@@ -5,6 +5,8 @@ Trained models predict variations such as corner rounding (both over and under e
 
 This repository includes the tools used in the paper `Deep Learning Based Prediction of Fabrication-Process-Induced Structural Variations in Nanophotonic Devices` (which can be viewed here) for generating and processing training data, training the predictor model, and using the predictor model on photonic designs. This repository also includes a collection of data to train them on.
 
+![promo](images/promo.png)
+
 ## Features
 `pattern.py` generates randomized patterns which can be fabricated and imaged to model a desired nanofabrication process.
 
@@ -17,6 +19,28 @@ This repository includes the tools used in the paper `Deep Learning Based Predic
 Matching SEM and design images are found in the `data/` directory.
 
 Sample device images (to be predicted) are found in the `devices/` directory.
+
+## Notes and Examples
+`PreFab` can be used in the following order to get started:
+1. Run `pattern.py` to generate design patterns for fabrication characterization
+    - Adjust pattern and filter sizes to suit your needs
+    - Generate a small collection of patterns to add to your layout (for fabrication and imaging) so that they can be used in training a model of your nanofabrication process
+
+
+2. Run `dataset.py` to prepare your data for training:
+    - See `data/example/` for a simple example of how GDS and SEM data should be arranged prior to running this script. Feel free to use the example data to get familiar with the process
+    - This script cuts the GDS and SEM images into smaller, more manageable slices for training and prediction. Adjust the slice and scanning step sizes to suit your needs
+
+
+3. Run `train.py` to train a model on your fabrication dataset:
+    - This script uses [TensorFlow](https://www.tensorflow.org/install) to handle the training
+    - Feel free to adjust the structure of the model and its hyperparameters to try to improve the prediction accuracy
+
+
+4. Run `predictor.py` to predict the fabrication variations of your device:
+    - A topologically optimized WDM DEMUX and some simple shapes are included in `devices/` to help in getting familiar with the process
+    - To use your own device design, the script must know the length (nm) and the resolution (px/nm) of the model's training data
+    - For high-accuracy prediction, use multiple models and a small scanning step size
 
 ## Authors
 `PreFab` was written by Dusan Gostimirovic with Odile Liboiron-Ladouceur, Danxia Xu, and Yuri Grinberg.
