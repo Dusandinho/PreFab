@@ -95,28 +95,29 @@ length_nm = 5000 # length of device (nm)
 scale = 1/(res/(length_nm/device.shape[1]))
 device = cv2.resize(device, (0, 0), fx = scale, fy = scale)
 device[device < 0.5], device[device >= 0.5] = 0, 1
-device = np.pad(device, [(100, 100), (100, 100)], mode = 'constant')
+pad = 10
+device = np.pad(device, [(pad, pad), (pad, pad)], mode = 'constant')
 device_size = (res*device.shape[0], res*device.shape[1])
 
 # run the prediction
 run = "example"     # name of the data directory (of dataset)
 version = 0         # version number (user defined, of dataset)
-model_nums = [0]    # can list multiple models here for smoother prediction
+model_nums = [0]    # can list multiple models here for better prediction
 step_size = 32      # step size for prediction scan (px)
 p = Predictor(run = run, version = version, model_nums = model_nums)
-prediction = p.predict(device = device, step_size = step_size, binarize = False)
+prediction = p.predict(device = device, step_size = step_size, binarize = True)
 
 # show the results
 plt.imshow(device, extent = [-device_size[1]/2, device_size[1]/2,
     -device_size[0]/2, device_size[0]/2])
-plt.title('Original Device')
+plt.title('Device Design')
 plt.ylabel('Distance (nm)')
 plt.xlabel('Distance (nm)')
 plt.show()
 
 plt.imshow(prediction, extent = [-device_size[1]/2, device_size[1]/2,
     -device_size[0]/2, device_size[0]/2])
-plt.title('Predicted Device')
+plt.title('Predicted Fabrication')
 plt.ylabel('Distance (nm)')
 plt.xlabel('Distance (nm)')
 plt.show()
