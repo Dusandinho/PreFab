@@ -13,27 +13,25 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 # general parameters
 run = "example"     # name of the data directory (of dataset)
 version = 0         # version number (user defined, of dataset)
-model_num = 0       # model number (user defined)
+model_num = 0       # model number (user defined, for labelling)
 slice_size = 128    # height/width of slice size (px)
 
 num_epochs = 5      # number of training epochs
 batch_size = 32     # batch size for training
-split = 0.8         # splitting ration for training:testing data
+split = 0.8         # splitting ratio for training:testing data
 
 # general functions
 def read_image(im1_file, im2_file):
     im1_image = tf.io.read_file(directory + im1_file)
     im1_image = tf.image.decode_image(im1_image, dtype = tf.float32)
     im1_image.set_shape([slice_size, slice_size, 1])
-
     im2_image = tf.io.read_file(directory + im2_file)
     im2_image = tf.image.decode_image(im2_image, dtype = tf.float32)
     im2_image.set_shape([slice_size, slice_size, 1])
-
     return im1_image, im2_image
 
 # %% codecell
-# initialize dataset
+# load and initialize dataset
 directory = 'datasets/' + run + '_v' + str(version) + '/'
 df = pd.read_csv('datasets/' + run + '_v' + str(version) + '.csv')
 
@@ -99,17 +97,15 @@ plt.legend(loc = 'lower right')
 plt.show()
 
 # %% codecell
-# check a prediction
+# show a prediction of random example
 im = random.randint(0, len(gds_paths))
 gds, sem = read_image(gds_paths[im], sem_paths[im])
 prediction = np.squeeze(model(gds[None, ...]).numpy())
-
-# binarize the prediction
 prediction_bin = cv2.GaussianBlur(prediction, (5, 5), 0)
 prediction_bin[prediction_bin >= 0.5] = 1
 prediction_bin[prediction_bin < 0.5] = 0
 
-# show one example
+# show the results
 plt.figure(figsize = (8, 9))
 plt.subplot(2, 2, 1)
 plt.title("Nominal")

@@ -32,7 +32,6 @@ class Pattern():
         self.f = self.f.real
         self.f[self.f < 0.5] = 0
         self.f[self.f >= 1] = 1
-
         return self.f
 
     def _transform(self):

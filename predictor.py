@@ -20,7 +20,7 @@ class Predictor():
                 + self.run + "_v" + str(self.version) + "_m" + str(j) + ".pb"))
         self.slice_size = int(np.sqrt(self.models[0].weights[-1].shape)[0])
 
-    def predict(self, device, step_size):
+    def predict(self, device, step_size, binarize):
         # cut up the device
         slice_size = self.slice_size
         xs = ys = 0
@@ -80,29 +80,43 @@ class Predictor():
         prediction = prediction/avg_matrix
 
         # binarize
-        prediction = cv2.GaussianBlur(prediction, (5, 5), 0)
-        prediction[prediction >= 0.5] = 1
-        prediction[prediction < 0.5] = 0
+        if binarize:
+            prediction = cv2.GaussianBlur(prediction, (5, 5), 0)
+            prediction[prediction >= 0.5] = 1
+            prediction[prediction < 0.5] = 0
 
         return prediction
 
 # %% codecell
-# load a device image in
-device = img.imread('devices/cross.png')[:, :, 1]
-res = 1.655 # resolution of training data (px/nm)
+# load a device image in and prepare for prediction
+device = img.imread('devices/demux.png')[:, :, 1]
+res = 1.655 # resolution of model's training data (px/nm)
+length_nm = 5000 # length of device (nm)
+scale = 1/(res/(length_nm/device.shape[1]))
+device = cv2.resize(device, (0, 0), fx = scale, fy = scale)
+device[device < 0.5], device[device >= 0.5] = 0, 1
+device = np.pad(device, [(100, 100), (100, 100)], mode = 'constant')
 device_size = (res*device.shape[0], res*device.shape[1])
 
 # run the prediction
 run = "example"     # name of the data directory (of dataset)
 version = 0         # version number (user defined, of dataset)
 model_nums = [0]    # can list multiple models here for smoother prediction
+step_size = 32      # step size for prediction scan (px)
 p = Predictor(run = run, version = version, model_nums = model_nums)
-prediction = p.predict(device = device, step_size = 128)
+prediction = p.predict(device = device, step_size = step_size, binarize = False)
 
-# show the result
-plt.imshow(prediction, extent = [-device_size[0]/2, device_size[0]/2,
-    -device_size[1]/2, device_size[1]/2])
-plt.title('Prediction')
+# show the results
+plt.imshow(device, extent = [-device_size[1]/2, device_size[1]/2,
+    -device_size[0]/2, device_size[0]/2])
+plt.title('Original Device')
+plt.ylabel('Distance (nm)')
+plt.xlabel('Distance (nm)')
+plt.show()
+
+plt.imshow(prediction, extent = [-device_size[1]/2, device_size[1]/2,
+    -device_size[0]/2, device_size[0]/2])
+plt.title('Predicted Device')
 plt.ylabel('Distance (nm)')
 plt.xlabel('Distance (nm)')
 plt.show()

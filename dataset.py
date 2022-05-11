@@ -7,8 +7,8 @@ import os
 
 # %% codecell
 # general parameters
-run = 'example'     # name of the data directory
-version = 0         # version number (user defined)
+run = 'example'     # name of the data directory (likely one per fab run)
+version = 0         # version number (user defined, for labelling)
 slice_size = 128    # height/width of slice size (px)
 step_size = 32      # step size of image slicing process (px)
 
@@ -17,17 +17,13 @@ def binarize(slice):
     grey = copy.deepcopy(slice)
     grey[grey > 150] = 150
     grey = cv2.GaussianBlur(grey, (5, 5), 0)
-    _, bin = cv2.threshold(grey, 0, 255,
-        cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-
+    _, bin = cv2.threshold(grey, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     return bin
 
-def pad(image):
-    pad = 100
+def pad(image, pad = 100):
     min = np.min(image[0, :])
     padded = np.pad(image, [(pad, pad), (pad, pad)], mode = 'constant')
     padded[padded == 0] = min
-
     return padded
 
 # %% codecell
