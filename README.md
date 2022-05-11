@@ -6,7 +6,7 @@ Trained models predict variations such as corner rounding (both over and under e
 This repository includes the tools used in the paper `Deep Learning Based Prediction of Fabrication-Process-Induced Structural Variations in Nanophotonic Devices` (which can be viewed here) for generating and processing training data, training the predictor model, and using the predictor model on photonic designs. This repository also includes a collection of data to train them on.
 
 <figure>
-<img src="images/promo.png" style="width:100%">
+<img src="images/promo.png">
 <figcaption align = "center">Figure 1 - Prediction of fabrication variation in a simple structure on a 220 nm silicon-on-insulator electron-beam lithography process. Prediction time of 8.2 seconds.</figcaption>
 </figure>
 
