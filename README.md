@@ -6,6 +6,7 @@ Trained models predict variations such as corner rounding (both over and under e
 This repository includes the tools used in the paper `Deep Learning Based Prediction of Fabrication-Process-Induced Structural Variations in Nanophotonic Devices` (which can be viewed here) for generating and processing training data, training the predictor model, and using the predictor model on photonic designs. This repository also includes a collection of data to train them on.
 
 ![promo](images/promo.png)
+<figcaption align = "center">Figure 1 - Prediction of fabrication variation in a simple structure on a 220 nm silicon-on-insulator electron-beam lithography process. Prediction time of 8.2 seconds.</figcaption>
 
 ## Features
 `pattern.py` generates randomized patterns which can be fabricated and imaged to model a desired nanofabrication process.
@@ -49,4 +50,4 @@ Sample device images (to be predicted) are found in the `devices/` directory.
 For usage of `PreFab` in your work, please cite our journal article.
 
 ## License
-This project is licensed under the terms of the MIT license. © 2022 National Research Council Canada and McGill University
+This project is licensed under the terms of the MIT license. © 2022 National Research Council Canada and McGill University.
