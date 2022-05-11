@@ -11,14 +11,14 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 # %% codecell
 # general parameters
-run = "example"
-version = 0
-model_num = 9
-slice_size = 128
+run = "example"     # name of the data directory (of dataset)
+version = 0         # version number (user defined, of dataset)
+model_num = 0       # model number (user defined)
+slice_size = 128    # height/width of slice size (px)
 
-num_epochs = 5
-batch_size = 32
-split = 0.8
+num_epochs = 5      # number of training epochs
+batch_size = 32     # batch size for training
+split = 0.8         # splitting ration for training:testing data
 
 # general functions
 def read_image(im1_file, im2_file):

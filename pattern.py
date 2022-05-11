@@ -53,8 +53,13 @@ class Pattern():
 
 # %% codecell
 # sample usage
-p = Pattern(height = 3000, width = 3000, fctr = 0.01)
+height = 3000   # height of pattern (px)
+width = 3000    # width of pattern (px)
+fctr = 0.01     # determines the general feature size
+
+p = Pattern(height = height, width = width, fctr = fctr)
 p.show_pattern()
 
+# uncomment the line below to save pattern as .mat (for later .gds conversion)
 # p.export_mat4gds('random-pattern_' + str(p.height) + 'x' + str(p.width) + '_'
 #     + str(p.fctr) + '.mat')

@@ -46,8 +46,7 @@ class Predictor():
 
         # inference the device images
         y_sum = 0
-        for j in self.model_nums:
-            model = self.models[j]
+        for model in self.models:
             x = tf.convert_to_tensor(device_images, dtype = tf.float32)
             y = np.squeeze(model(x).numpy())
             y_sum += y
@@ -88,14 +87,19 @@ class Predictor():
         return prediction
 
 # %% codecell
-# sample usage
-device = img.imread('devices/box.png')[:, :, 1]
-res = 1.6548463356973995
+# load a device image in
+device = img.imread('devices/cross.png')[:, :, 1]
+res = 1.655 # resolution of training data (px/nm)
 device_size = (res*device.shape[0], res*device.shape[1])
 
-model_nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-p = Predictor(run = 'example', version = 0, model_nums = model_nums)
-prediction = p.predict(device = device, step_size = 16)
+# run the prediction
+run = "example"     # name of the data directory (of dataset)
+version = 0         # version number (user defined, of dataset)
+model_nums = [0]    # can list multiple models here for smoother prediction
+p = Predictor(run = run, version = version, model_nums = model_nums)
+prediction = p.predict(device = device, step_size = 128)
+
+# show the result
 plt.imshow(prediction, extent = [-device_size[0]/2, device_size[0]/2,
     -device_size[1]/2, device_size[1]/2])
 plt.title('Prediction')

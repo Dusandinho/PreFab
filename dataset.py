@@ -7,10 +7,10 @@ import os
 
 # %% codecell
 # general parameters
-run = 'example'
-version = 1
-slice_size = 128
-step_size = 32
+run = 'example'     # name of the data directory
+version = 0         # version number (user defined)
+slice_size = 128    # height/width of slice size (px)
+step_size = 32      # step size of image slicing process (px)
 
 # general functions
 def binarize(slice):
@@ -35,8 +35,8 @@ def pad(image):
 GDS_images = []
 SEM_images = []
 SEMb_images = []
-GDS_dir = 'data/GDS/' + run + '/'
-SEM_dir = 'data/SEM/' + run + '/'
+GDS_dir = 'data/' + run + '/GDS/'
+SEM_dir = 'data/' + run + '/SEM/'
 for SEM_path in os.listdir(SEM_dir):
     SEM_image = cv2.imread(SEM_dir + SEM_path, 0)
     if SEM_image is not None:
