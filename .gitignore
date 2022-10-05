@@ -1,3 +1,2 @@
 .DS_Store
-/datasets
-/models
+/prefab/__pycache__
