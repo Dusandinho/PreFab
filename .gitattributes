@@ -1,1 +1,1 @@
-*.pb -linguist-detectable
+models/* linguist-vendored
