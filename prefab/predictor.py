@@ -39,7 +39,7 @@ class Predictor():
         y_slices = y_sum/len(self.models)
         y_slices = np.squeeze(y_slices).reshape(x_slices_4D.shape)
 
-        # stitch slices back together
+        # stitch slices back together (needs a better method)
         y = np.zeros(device.shape)
         avg_mtx = np.zeros(device.shape)
         for k in range(0, device.shape[0]-self.slice_length+1, step_length):
