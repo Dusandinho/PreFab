@@ -1,3 +1,5 @@
+<img src="images/logo.png" title="PreFab" alt="PreFab">
+
 # PreFab
 `PreFab` (Prediction of Fabrication) is used for modelling fabrication process induced variations in integrated photonic devices using deep convolutional neural networks.
 
