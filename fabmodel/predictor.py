@@ -3,7 +3,8 @@ import os
 import numpy as np
 import tensorflow as tf
 from keras import models
-from prefab.processor import binarize
+
+from fabmodel.processor import binarize
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
