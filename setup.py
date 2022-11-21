@@ -13,7 +13,7 @@ def get_install_requires():
 
 setup(
     name="fabmodel",
-    version="0.0.1",
+    version="0.0.2",
     url="https://github.com/Dusandinho/PreFab",
     license="MIT",
     author="Dusan",

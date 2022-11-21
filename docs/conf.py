@@ -1,7 +1,5 @@
-from recommonmark.transform import AutoStructify
-
 project = "fabmodel"
-version = "0.0.1"
+version = "0.0.2"
 copyright = "2022"
 # copyright = "2020, Dusan"
 # author = "Dusan"
