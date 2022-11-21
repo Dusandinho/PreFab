@@ -1,4 +1,3 @@
-
 from setuptools import find_packages
 from setuptools import setup
 
@@ -8,7 +7,7 @@ with open("README.md") as f:
 
 
 def get_install_requires():
-    with open("requirements.txt", "r") as f:
+    with open("requirements.txt") as f:
         return [line.strip() for line in f.readlines() if not line.startswith("-")]
 
 

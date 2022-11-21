@@ -7,6 +7,4 @@ fabmodel
 
     README
     markdown
-    rst
-
-
+    api

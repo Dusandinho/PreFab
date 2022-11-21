@@ -1,5 +1,5 @@
 matplotlib
 numpy
 gdspy
-opencv-python
+opencv - python
 tensorflow
