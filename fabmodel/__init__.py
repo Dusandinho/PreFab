@@ -16,3 +16,5 @@ __all__ = [
     "processor",
     "trim",
 ]
+
+__version__ = "0.0.1"
