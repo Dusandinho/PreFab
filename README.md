@@ -1,6 +1,7 @@
 <img src="images/logo.png" title="PreFab" alt="PreFab">
 
-# PreFab
+# PreFab 0.0.1
+
 `PreFab` (Prediction of Fabrication) is used for modelling fabrication process induced variations in integrated photonic devices using deep convolutional neural networks.
 
 Trained models predict variations such as corner rounding (both over and under etching), washing away of small lines and islands, and filling of narrow holes and channels in planar photonic structures. Once predicted, the designer resimulates their design to rapidly prototype the expected performance and make any necessary corrections prior to (costly) fabrication.
