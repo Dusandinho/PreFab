@@ -1,5 +1,11 @@
 <img src="images/logo.png" title="PreFab" alt="PreFab">
 
+# Important: Time to Use the Shiny New Repository
+Hey there!
+We've got a brand new repository to replace the old one you've been using—and it's way better! Newer models, design correction, cloud processing, and regular updates. 🎉
+
+Go to [github.com/PreFab-Photonics/PreFab](https://github.com/PreFab-Photonics/PreFab) to get started.
+
 # PreFab
 `PreFab` (Prediction of Fabrication) is used for modelling fabrication process induced variations in integrated photonic devices using deep convolutional neural networks.
 
